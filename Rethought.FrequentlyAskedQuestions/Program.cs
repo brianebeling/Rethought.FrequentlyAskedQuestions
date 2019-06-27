@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Discord;
+using Discord.Addons.Interactive;
 using Discord.WebSocket;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Dialogflow.V2;
@@ -26,7 +27,7 @@ namespace Rethought.FrequentlyAskedQuestions
 
             var sessionsClient = SessionsClient.Create(channel);
             
-            var messageHandler = new MessageHandler(sessionsClient, dialogflowConfiguration);
+            var messageHandler = new MessageHandler(sessionsClient, dialogflowConfiguration, new InteractiveService(discordSocketClient, TimeSpan.FromMinutes(3)));
 
             discordSocketClient.Log += Log;
 
