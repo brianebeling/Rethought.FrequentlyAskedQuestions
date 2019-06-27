@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using Google.Cloud.Dialogflow.V2;
+using MoreLinq;
 
 namespace Rethought.FrequentlyAskedQuestions
 {
@@ -29,11 +30,13 @@ namespace Rethought.FrequentlyAskedQuestions
                 return;
             }
 
+            var sanitizedMessage = Format.Sanitize(socketMessage.Content);
+            
             var query = new QueryInput()
             {
                 Text = new TextInput()
                 {
-                    Text = socketMessage.Content,
+                    Text = sanitizedMessage,
                     LanguageCode = "en-us"
                 }
             };
@@ -41,9 +44,30 @@ namespace Rethought.FrequentlyAskedQuestions
             var sessionId = Guid.NewGuid().ToString();
 
             var response = await sessionsClient.DetectIntentAsync(new SessionName(dialogflowConfiguration.ProjectId, sessionId), query);
-            
-            await socketMessage.Channel.SendMessageAsync($"Detected the intent (Confidence: {response.QueryResult.IntentDetectionConfidence}): " + response.QueryResult.Intent.DisplayName);
-            
+
+            if (response.QueryResult.Intent.IsFallback)
+            {
+                return;
+            }
+
+            if (response.QueryResult.IntentDetectionConfidence <= 0.7)
+            {
+                return;
+            }
+
+            var fulfillmentMessage = response.QueryResult.FulfillmentMessages.RandomSubset(1);
+
+            if (!fulfillmentMessage.Any())
+            {
+                return;
+            }
+
+            if (response.QueryResult.IntentDetectionConfidence <= 0.85)
+            {
+                await socketMessage.Channel.SendMessageAsync($"I'm not quite sure if I understood that correctly." + Environment.NewLine + fulfillmentMessage + Environment.NewLine + Format.Italics("React to the message to let me know if I was correct."));
+            }
+
+            await socketMessage.Channel.SendMessageAsync();
         }
     }
 }
