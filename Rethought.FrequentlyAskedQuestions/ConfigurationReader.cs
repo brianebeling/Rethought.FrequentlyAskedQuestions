@@ -14,7 +14,7 @@ namespace Rethought.FrequentlyAskedQuestions
         public DiscordAuthentication GetDiscordAuthentication()
         {
             var discordAuthentication = new DiscordAuthentication();
-            this.configurationRoot.GetSection("Authentication").GetSection("Discord").Bind(discordAuthentication);
+            configurationRoot.GetSection("Authentication").GetSection("Discord").Bind(discordAuthentication);
 
             return discordAuthentication;
         }
@@ -22,11 +22,10 @@ namespace Rethought.FrequentlyAskedQuestions
         public DialogflowConfiguration GetDialogflowConfiguration()
         {
             var dialogflowConfiguration = new DialogflowConfiguration();
-            this.configurationRoot.GetSection("Authentication").GetSection("Dialogflow").Bind(dialogflowConfiguration);
-            this.configurationRoot.GetSection("Dialogflow").Bind(dialogflowConfiguration);
+            configurationRoot.GetSection("Authentication").GetSection("Dialogflow").Bind(dialogflowConfiguration);
+            configurationRoot.GetSection("Dialogflow").Bind(dialogflowConfiguration);
 
             return dialogflowConfiguration;
-
         }
     }
 }
