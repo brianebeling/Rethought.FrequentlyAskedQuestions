@@ -31,7 +31,7 @@ namespace Rethought.FrequentlyAskedQuestions
         {
             if (conversationService.Conversations.ContainsKey(socketUserMessage.Author.Id)) return;
 
-            if (intent.QueryResult.IntentDetectionConfidence <= 0.7) return;
+            if (intent.QueryResult.IntentDetectionConfidence <= 0.5) return;
 
             var fulfillmentMessage = intent.QueryResult.FulfillmentMessages.RandomSubset(1).FirstOrDefault();
 

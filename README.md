@@ -17,7 +17,15 @@ If you decide to attempt this on your own (not recommended) you need to add an a
 
 ### Screenshots
 
-![screenshot one](https://i.imgur.com/nuHGAvn.png)
+The images are a bit big, so I put links instead of showing them.
+
+https://i.imgur.com/nuHGAvn.png
+
+
+https://i.imgur.com/77xeIxA.png
+
+
+
 
 ## Limitations
 
