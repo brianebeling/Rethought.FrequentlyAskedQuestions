@@ -22,6 +22,16 @@ namespace Rethought.FrequentlyAskedQuestions
 
             if (conversationService.Conversations.ContainsKey(socketUserMessage.Author.Id)) return;
 
+            if (socketUserMessage.Channel is SocketGuildChannel socketGuildChannel)
+            {
+                var guildUser = socketGuildChannel.GetUser(socketUserMessage.Author.Id);
+
+                if (!guildUser.GetPermissions(socketGuildChannel).ManageMessages)
+                {
+                    return;
+                }
+            }
+
             await conversationService.StartAdditionConversationAsync(socketUserMessage, CancellationToken.None);
         }
     }
@@ -42,6 +52,16 @@ namespace Rethought.FrequentlyAskedQuestions
             if (intent.QueryResult.Intent.Name != prebuiltIntents.CorrectIntentName) return;
 
             if (conversationService.Conversations.ContainsKey(socketUserMessage.Author.Id)) return;
+
+            if (socketUserMessage.Channel is SocketGuildChannel socketGuildChannel)
+            {
+                var guildUser = socketGuildChannel.GetUser(socketUserMessage.Author.Id);
+
+                if (!guildUser.GetPermissions(socketGuildChannel).ManageMessages)
+                {
+                    return;
+                }
+            }
 
             await conversationService.StartCorrectionConversationAsync(socketUserMessage, CancellationToken.None);
         }
