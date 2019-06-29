@@ -19,8 +19,13 @@ If you decide to attempt this on your own (not recommended) you need to add an a
 
 The images are a bit big, so I put links instead of showing them.
 
+Screenshot of the bot answering questions
+
 https://i.imgur.com/nuHGAvn.png
 
+
+Screenshot of someone adding a new question and then testing with a variation.
+Additionally that person has clickeed on the reaction and the bot has been trained on their variation.
 
 https://i.imgur.com/77xeIxA.png
 
