@@ -10,6 +10,7 @@ using Google.Cloud.Dialogflow.V2;
 using Grpc.Auth;
 using Grpc.Core;
 using Microsoft.Extensions.Configuration;
+using Rethought.FrequentlyAskedQuestions.Strategies;
 
 namespace Rethought.FrequentlyAskedQuestions
 {

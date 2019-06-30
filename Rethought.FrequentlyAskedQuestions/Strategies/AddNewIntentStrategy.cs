@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Discord.WebSocket;
 using Google.Cloud.Dialogflow.V2;
 
-namespace Rethought.FrequentlyAskedQuestions
+namespace Rethought.FrequentlyAskedQuestions.Strategies
 {
     public class AddNewIntentStrategy : IUserQuestionReceivedStrategy
     {

@@ -9,7 +9,7 @@ using Google.Cloud.Dialogflow.V2;
 using MoreLinq;
 using Newtonsoft.Json;
 
-namespace Rethought.FrequentlyAskedQuestions
+namespace Rethought.FrequentlyAskedQuestions.Strategies
 {
     public class RespondToIntentStrategy : IUserQuestionReceivedStrategy
     {

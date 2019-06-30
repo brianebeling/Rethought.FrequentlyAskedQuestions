@@ -6,7 +6,7 @@ using Discord;
 using Discord.WebSocket;
 using Google.Cloud.Dialogflow.V2;
 
-namespace Rethought.FrequentlyAskedQuestions
+namespace Rethought.FrequentlyAskedQuestions.Strategies
 {
     public class UserQuestionReceivedStrategy : IMessageReceivedStrategy
     {
@@ -33,7 +33,7 @@ namespace Rethought.FrequentlyAskedQuestions
 
             if (socketMessage is SocketUserMessage socketUserMessage)
             {
-                //if (!socketMessage.Content.EndsWith('?')) return;
+                if (socketUserMessage.MentionedUsers.All(user => user.Id != discordSocketClient.CurrentUser.Id)) return;
 
                 if (socketUserMessage.MentionedUsers.Count > 0
                     && socketUserMessage.MentionedUsers.Any(user => user.Id != discordSocketClient.CurrentUser.Id))

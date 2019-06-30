@@ -1,15 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using Discord;
+﻿using System.Threading.Tasks;
 using Discord.WebSocket;
 using Google.Cloud.Dialogflow.V2;
 
-namespace Rethought.FrequentlyAskedQuestions
+namespace Rethought.FrequentlyAskedQuestions.Strategies
 {
     public class ShowIntentsStrategy : IUserQuestionReceivedStrategy
     {
         private readonly ConversationService conversationService;
-        private readonly DialogflowConfiguration dialogflowConfiguration;
         private readonly IntentService intentService;
         private readonly PrebuiltIntents prebuiltIntents;
 

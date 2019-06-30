@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Discord.WebSocket;
+using Rethought.FrequentlyAskedQuestions.Strategies;
 
 namespace Rethought.FrequentlyAskedQuestions
 {

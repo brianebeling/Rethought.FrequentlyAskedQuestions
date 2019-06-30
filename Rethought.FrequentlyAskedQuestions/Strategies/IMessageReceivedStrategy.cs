@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Discord.WebSocket;
 
-namespace Rethought.FrequentlyAskedQuestions
+namespace Rethought.FrequentlyAskedQuestions.Strategies
 {
     public interface IMessageReceivedStrategy
     {

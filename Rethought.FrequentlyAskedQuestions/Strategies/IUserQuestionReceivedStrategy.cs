@@ -2,7 +2,7 @@
 using Discord.WebSocket;
 using Google.Cloud.Dialogflow.V2;
 
-namespace Rethought.FrequentlyAskedQuestions
+namespace Rethought.FrequentlyAskedQuestions.Strategies
 {
     public interface IUserQuestionReceivedStrategy
     {
